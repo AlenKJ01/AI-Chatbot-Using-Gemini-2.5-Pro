@@ -90,8 +90,8 @@ GEMINI_MODEL_NAME=gemini-2.5-pro
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/yourusername/AI-Chatbot-using-Gemini.git
-cd AI-Chatbot-using-Gemini
+git clone https://github.com/AlenKJ01/GeminiDocQA.git
+cd GeminiDocQA
 ```
 
 ### 2️⃣ Create a virtual environment
