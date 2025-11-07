@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+jinja2
+python-multipart
+pymupdf        # for PDFs (PyMuPDF)
+python-docx    # for DOCX
+transformers
+torch
+sentence-transformers
+faiss-cpu
+langchain
+google-generativeai  # or google-generativeai (install the package you prefer)
+python-dotenv
+typing_extensions

@@ -1,0 +1,33 @@
+/* app/static/styles.css */
+:root{
+    --bg:#f6f8fa;
+    --card:#ffffff;
+    --muted:#6b7280;
+    --accent:#0b5fff;
+    --danger:#ef4444;
+  }
+  *{box-sizing:border-box}
+  body{font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:var(--bg); margin:0; color:#0f172a}
+  .container{max-width:900px;margin:28px auto;padding:20px}
+  header{display:flex;flex-direction:column;gap:6px}
+  h1{margin:0;font-size:1.6rem}
+  .muted{color:var(--muted);font-size:0.95rem}
+  .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 16px rgba(12,16,24,0.06);margin-top:16px}
+  .form{display:flex;gap:10px;align-items:center}
+  .form input[type="file"]{padding:8px}
+  .btn{background:var(--accent);color:white;padding:8px 12px;border:none;border-radius:8px;cursor:pointer}
+  .btn:hover{filter:brightness(0.95)}
+  .extracted{white-space:pre-wrap;background:#0f172a;color:#f8fafc;padding:12px;border-radius:8px;max-height:240px;overflow:auto}
+  .summary{background:#f3f4f6;padding:12px;border-radius:8px}
+  .chat .history{margin-top:12px;max-height:360px;overflow:auto}
+  .qa{background:#f8fafc;padding:12px;border-radius:8px;margin-bottom:10px}
+  .q{color:#0b1220}
+  .a{color:#0b5fff}
+  .alert{background:var(--danger);color:white;padding:10px;border-radius:8px}
+  textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e5e7eb}
+  details summary{cursor:pointer;padding:8px 0;font-weight:600}
+  footer{margin-top:18px;text-align:center}
+  
+  @media (max-width:640px){
+    .container{padding:12px}
+  }

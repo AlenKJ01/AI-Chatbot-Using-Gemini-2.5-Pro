@@ -1,0 +1,82 @@
+<!-- app/templates/index.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Chatbot — Gemini 2.5 Pro</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>AI Chatbot (Gemini 2.5 Pro)</h1>
+        <p class="muted">Upload a document → Summarize → Create Vectorstore → Chat (no JavaScript)</p>
+      </header>
+
+      {% if error %}
+      <div class="alert">{{ error }}</div>
+      {% endif %}
+
+      <section class="card">
+        <h2>1. Upload Document</h2>
+        <form action="/upload" enctype="multipart/form-data" method="post" class="form">
+          <input type="file" name="file" accept=".pdf,.txt,.docx" required />
+          <button class="btn" type="submit">Upload</button>
+        </form>
+
+        {% if extracted_text %}
+        <details open>
+          <summary>Extracted text (scrollable)</summary>
+          <pre class="extracted">{{ extracted_text }}</pre>
+        </details>
+        {% endif %}
+      </section>
+
+      <section class="card">
+        <h2>2. Summarize</h2>
+        <form action="/summarize" method="post">
+          <button class="btn" type="submit">Generate Summary</button>
+        </form>
+
+        {% if summary %}
+        <details open>
+          <summary>Summary</summary>
+          <div class="summary">{{ summary }}</div>
+        </details>
+        {% endif %}
+      </section>
+
+      <section class="card">
+        <h2>3. Create Vectorstore</h2>
+        <form action="/create_vectorstore" method="post">
+          <button class="btn" type="submit">Create Vectorstore (FAISS)</button>
+        </form>
+      </section>
+
+      <section class="card chat">
+        <h2>4. Chat with Document</h2>
+        <form action="/chat" method="post" class="form">
+          <label for="question">Your question (answers will use only the uploaded document):</label>
+          <textarea id="question" name="question" rows="3" required></textarea>
+          <button class="btn" type="submit">Ask</button>
+        </form>
+
+        <div class="history">
+          {% if chat_history %}
+            {% for q,a in chat_history|reverse %}
+            <div class="qa">
+              <div class="q"><strong>You:</strong> {{ q }}</div>
+              <div class="a"><strong>Assistant:</strong> {{ a }}</div>
+            </div>
+            {% endfor %}
+          {% else %}
+            <div class="muted">No messages yet — ask a question above.</div>
+          {% endif %}
+        </div>
+      </section>
+
+      <footer class="muted">Prototype — for demo purposes only. Keep API keys secure.</footer>
+    </main>
+  </body>
+</html>
